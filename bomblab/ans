@@ -1,0 +1,25 @@
+Border relations with Canada have never been better.
+1 2 4 8 16 32
+0 207
+0 0
+IONEFG
+4 3 2 1 6 5
+22
+
+test:
+lq@lq:~/15-213/bomb$ ./bomb
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Border relations with Canada have never been better.
+1 2 4 8 16 32
+0 207
+0 0
+IONEFG
+4 3 2 1 6 5
+22Phase 1 defused. How about the next one?
+That's number 2.  Keep going!
+Halfway there!
+So you got that one.  Try this one.
+Good work!  On to the next...
+Congratulations! You've defused the bomb!
+
